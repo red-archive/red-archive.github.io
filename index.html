@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RED ARCHIVE — The Schools of Communism</title>
+<meta name="description" content="An educational atlas of every major school of communist thought: lineage tree, dossiers, timelines, schisms and a classification quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Space+Grotesk:wght@400;600&family=Stalinist+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="js/shared.js"></script>
+<script defer src="js/tree.js"></script>
+</head>
+<body>
+<div id="nav"></div>
+
+<div class="shell">
+  <header class="hero">
+    <p class="eyebrow">STATE ARCHIVE // IDEOLOGICAL CARTOGRAPHY DIVISION</p>
+    <h1 class="glitch" data-text="RED ARCHIVE">RED ARCHIVE</h1>
+    <p class="tagline"><b>Twenty schools. Five centuries. One long argument about who owns the future.</b>
+    This archive maps every major current of communist thought — where each one spawned,
+    what it believed, whom it fought and what it became — as a living tree of descent,
+    influence and schism. A history file, not a recruitment poster: the purges, famines
+    and heresies are documented alongside the theory.</p>
+    <div class="hero-meta">
+      <span>FILES <b>20</b></span>
+      <span>SPAN <b>1516 – NOW</b></span>
+      <span>SCHISMS LOGGED <b>12</b></span>
+      <span>STATUS <b>DECLASSIFIED</b></span>
+    </div>
+  </header>
+
+  <section id="tree" aria-labelledby="tree-h">
+    <h2 class="sec" id="tree-h"><span class="n">01</span> The Lineage Tree</h2>
+    <p style="max-width:46rem;color:var(--paper-dim)">Every school descends from, reacts to, or
+    excommunicates another. Hover a star to isolate its wiring; click to open the dossier.
+    Gold traces are descent, teal are influence, red are schisms.</p>
+    <div class="tree-wrap">
+      <div id="tree-canvas"></div>
+      <div class="tree-legend">
+        <span class="l-descent"><i></i>DESCENT</span>
+        <span class="l-influence"><i></i>INFLUENCE</span>
+        <span class="l-schism"><i></i>SCHISM</span>
+        <span style="margin-left:auto">★ = OPEN FILE</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="files" aria-labelledby="files-h">
+    <h2 class="sec" id="files-h"><span class="n">02</span> The Files</h2>
+    <div class="file-grid">
+      <a class="file-card" href="schools/utopian-socialism.html">
+        <span class="fc-no">FILE 01 // 1516–1840s</span>
+        <span class="fc-name">Utopian Socialism</span>
+        <span class="fc-desc">Model villages, phalansteries and dreamed cities: communism before the class struggle.</span>
+      </a>
+      <a class="file-card" href="schools/marxism.html">
+        <span class="fc-no">FILE 02 // 1848</span>
+        <span class="fc-name">Marxism</span>
+        <span class="fc-desc">The source code. Historical materialism, surplus value, and a spectre haunting Europe.</span>
+      </a>
+      <a class="file-card" href="schools/anarcho-communism.html">
+        <span class="fc-no">FILE 03 // 1876</span>
+        <span class="fc-name">Anarcho-Communism</span>
+        <span class="fc-desc">The commune without the state — Kropotkin's bread against the dictatorship of the proletariat.</span>
+      </a>
+      <a class="file-card" href="schools/de-leonism.html">
+        <span class="fc-no">FILE 04 // 1895</span>
+        <span class="fc-name">De Leonism</span>
+        <span class="fc-desc">The ballot box plus one big industrial union: revolutionary socialism, made in America.</span>
+      </a>
+      <a class="file-card" href="schools/orthodox-marxism.html">
+        <span class="fc-no">FILE 05 // 1889</span>
+        <span class="fc-name">Orthodox Marxism</span>
+        <span class="fc-desc">The Second International: waiting scientifically for capitalism to fall on schedule.</span>
+      </a>
+      <a class="file-card" href="schools/leninism.html">
+        <span class="fc-no">FILE 06 // 1902</span>
+        <span class="fc-name">Leninism</span>
+        <span class="fc-desc">The vanguard party: professional revolutionaries seize the state — then the century.</span>
+      </a>
+      <a class="file-card" href="schools/luxemburgism.html">
+        <span class="fc-no">FILE 07 // 1906</span>
+        <span class="fc-name">Luxemburgism</span>
+        <span class="fc-desc">Revolution as mass strike; freedom is always the freedom of the one who thinks differently.</span>
+      </a>
+      <a class="file-card" href="schools/left-communism.html">
+        <span class="fc-no">FILE 08 // 1918</span>
+        <span class="fc-name">Left Communism</span>
+        <span class="fc-desc">Councils not parties, workers not leaders — the heresy Lenin called an infantile disorder.</span>
+      </a>
+      <a class="file-card" href="schools/trotskyism.html">
+        <span class="fc-no">FILE 09 // 1923</span>
+        <span class="fc-name">Trotskyism</span>
+        <span class="fc-desc">Permanent revolution in exile; the Fourth International against the betrayed one.</span>
+      </a>
+      <a class="file-card" href="schools/marxism-leninism.html">
+        <span class="fc-no">FILE 10 // 1924</span>
+        <span class="fc-name">Marxism–Leninism</span>
+        <span class="fc-desc">Stalinism: socialism in one country — the party-state orthodoxy of the USSR and its bloc.</span>
+      </a>
+      <a class="file-card" href="schools/western-marxism.html">
+        <span class="fc-no">FILE 11 // 1923</span>
+        <span class="fc-name">Western Marxism</span>
+        <span class="fc-desc">From Gramsci's hegemony to the Frankfurt School: why the revolution never came west.</span>
+      </a>
+      <a class="file-card" href="schools/maoism.html">
+        <span class="fc-no">FILE 12 // 1949</span>
+        <span class="fc-name">Maoism</span>
+        <span class="fc-desc">The countryside surrounds the cities: peasant war, permanent upheaval, people's war.</span>
+      </a>
+      <a class="file-card" href="schools/titoism.html">
+        <span class="fc-no">FILE 13 // 1948</span>
+        <span class="fc-name">Titoism</span>
+        <span class="fc-desc">Worker self-management and non-alignment — the first successful "no" to Moscow.</span>
+      </a>
+      <a class="file-card" href="schools/guevarism.html">
+        <span class="fc-no">FILE 14 // 1959</span>
+        <span class="fc-name">Guevarism</span>
+        <span class="fc-desc">The foco: a dozen guerrillas in the mountains can spark the revolution.</span>
+      </a>
+      <a class="file-card" href="schools/posadism.html">
+        <span class="fc-no">FILE 15 // 1962</span>
+        <span class="fc-name">Posadism</span>
+        <span class="fc-desc">Nuclear fire, dolphins and flying saucers: Trotskyism's strangest child.</span>
+      </a>
+      <a class="file-card" href="schools/juche.html">
+        <span class="fc-no">FILE 16 // 1955</span>
+        <span class="fc-name">Juche</span>
+        <span class="fc-desc">Self-reliance as dynasty: Korea's man-centred rewrite of Marxism–Leninism.</span>
+      </a>
+      <a class="file-card" href="schools/hoxhaism.html">
+        <span class="fc-no">FILE 17 // 1961</span>
+        <span class="fc-name">Hoxhaism</span>
+        <span class="fc-desc">Bunker Albania holds the line: everyone else is a revisionist.</span>
+      </a>
+      <a class="file-card" href="schools/autonomism.html">
+        <span class="fc-no">FILE 18 // 1961</span>
+        <span class="fc-name">Autonomism</span>
+        <span class="fc-desc">Refuse work, exit the factory: operaismo and the social factory.</span>
+      </a>
+      <a class="file-card" href="schools/eurocommunism.html">
+        <span class="fc-no">FILE 19 // 1975</span>
+        <span class="fc-name">Eurocommunism</span>
+        <span class="fc-desc">Ballots over Moscow: the Western parties break with the Soviet model.</span>
+      </a>
+      <a class="file-card" href="schools/dengism.html">
+        <span class="fc-no">FILE 20 // 1978</span>
+        <span class="fc-name">Dengism</span>
+        <span class="fc-desc">To get rich is glorious: the socialist market economy with Chinese characteristics.</span>
+      </a>
+    </div>
+  </section>
+
+  <aside class="cta-band" style="margin-bottom:0">
+    <div>
+      <p class="eyebrow">ANNEX A // DEFINITIONS &amp; MODERN CONTROVERSIES</p>
+      <h2>The Line</h2>
+      <p>What a communist is and isn't; the old guard on morals, discipline and bourgeois
+      individualism; the capture argument; the DSA and streamer-left case files; and the
+      migration file — Marx's 1870 letter, in full context.</p>
+    </div>
+    <a class="btn ghost" href="the-line.html">Open Annex A</a>
+  </aside>
+
+  <aside class="cta-band">
+    <div>
+      <p class="eyebrow">IDEOLOGICAL CLASSIFICATION PROTOCOL</p>
+      <h2>Which star are you under?</h2>
+      <p>Answer a branching interrogation — every answer is a fork in the tree —
+      and the archive will file you with your school, your comrades and your enemies.</p>
+    </div>
+    <a class="btn" href="quiz.html">Run the protocol</a>
+  </aside>
+</div>
+
+<div id="footer"></div>
+</body>
+</html>
