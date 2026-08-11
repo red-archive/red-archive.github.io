@@ -12,6 +12,8 @@
     { href: "timeline.html", label: "Timeline" },
     { href: "conflicts.html", label: "Schisms" },
     { href: "the-line.html", label: "The Line" },
+    { href: "the-ledger.html", label: "The Ledger" },
+    { href: "register.html", label: "Register" },
     { href: "quiz.html", label: "Classify Me" }
   ];
 
@@ -47,6 +49,8 @@
       '<a href="' + R + 'timeline.html">master timeline</a> · ' +
       '<a href="' + R + 'conflicts.html">the great schisms</a> · ' +
       '<a href="' + R + 'the-line.html">annex a: the line</a> · ' +
+      '<a href="' + R + 'the-ledger.html">annex b: the ledger</a> · ' +
+      '<a href="' + R + 'register.html">annex c: the register</a> · ' +
       '<a href="' + R + 'quiz.html">classification protocol</a>' +
       "</footer>";
   }
