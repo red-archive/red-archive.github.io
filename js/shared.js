@@ -41,7 +41,8 @@
     el.outerHTML =
       '<footer class="footer">' +
       '<span class="star">★</span> RED_ARCHIVE — a historical &amp; educational atlas of communist thought. ' +
-      "Not propaganda for any tendency; every school documented with its crimes, schisms and critics intact.<br>" +
+      "The archive holds a line \u2014 Marxist\u2013Leninist, and stated openly rather than smuggled. Every school is " +
+      "documented with its crimes, schisms and critics intact, and every verdict shows the test that produced it.<br>" +
       'Portraits hotlinked from <a href="https://commons.wikimedia.org" rel="noopener">Wikimedia Commons</a> ' +
       "(public domain / CC licenses); offline or missing images degrade to archive placeholders. " +
       "Text written for this archive.<br>" +
