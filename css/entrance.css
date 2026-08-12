@@ -1,0 +1,75 @@
+/* RED ARCHIVE — entrance gate. Full-viewport insignia before the archive proper. */
+.entrance {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  padding: 3rem 1.4rem 4rem;
+  border-bottom: 1px solid var(--banner);
+}
+.entrance-star {
+  width: min(400px, 74vw);
+  height: min(400px, 74vw);
+}
+.entrance-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 6vw, 3.2rem);
+  color: var(--paper);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  position: relative;
+  line-height: 1.15;
+}
+.entrance-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--banner);
+  padding: 0.6rem 1.2rem;
+  background: rgba(10, 5, 8, 0.85);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--signal);
+  font-weight: 700;
+}
+.entrance-chip .chip-star { width: 34px; height: 34px; flex: none; }
+.entrance-chip .v { opacity: 0.55; }
+.entrance-caption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--paper-dim);
+  text-transform: uppercase;
+  max-width: 34rem;
+}
+.entrance-enter {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--signal);
+  border: 1px solid var(--signal-dim);
+  padding: 0.8rem 1.6rem;
+  transition: color 0.15s, border-color 0.15s;
+}
+.entrance-enter:hover { color: var(--gold); border-color: var(--gold-dim); }
+.entrance-enter .cue {
+  display: inline-block;
+  margin-left: 0.6rem;
+  animation: entrance-cue 1.9s ease-in-out infinite;
+}
+@keyframes entrance-cue {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(4px); opacity: 1; }
+}
+@media (max-width: 640px) {
+  .entrance { gap: 1.4rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .entrance-enter .cue { animation: none; }
+}
