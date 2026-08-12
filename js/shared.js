@@ -56,6 +56,9 @@
       'Portraits hotlinked from <a href="https://commons.wikimedia.org" rel="noopener">Wikimedia Commons</a> ' +
       "(public domain / CC licenses); offline or missing images degrade to archive placeholders. " +
       "Text written for this archive.<br>" +
+      'Open source, no build step and no analytics: ' +
+      '<a href="https://github.com/red-archive/red-archive.github.io" rel="noopener">source on GitHub</a>. ' +
+      "Corrections and sourced additions welcome.<br>" +
       'FILE INDEX: <a href="' + R + 'index.html#files">20 dossiers</a> · ' +
       '<a href="' + R + 'timeline.html">master timeline</a> · ' +
       '<a href="' + R + 'conflicts.html">the great schisms</a> · ' +
