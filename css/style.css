@@ -872,3 +872,46 @@ h1, h2, h3 { line-height: 1.15; }
 @media (prefers-reduced-motion: reduce) {
   .logo-fx::after { animation: none; }
 }
+
+/* ------------------------------------------------------------
+   MEDIA — archive clips and plates
+   ------------------------------------------------------------ */
+.clip {
+  margin: 1.6rem 0;
+  border: 1px solid var(--banner);
+  background: var(--void-2);
+  max-width: 46rem;
+}
+.clip video { display: block; width: 100%; height: auto; background: #000; }
+.clip figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  padding: 0.6rem 0.9rem;
+  border-top: 1px dashed rgba(107, 15, 26, 0.6);
+}
+.plate {
+  margin: 1.6rem 0;
+  border: 1px solid var(--banner);
+  background: var(--void-2);
+  max-width: 46rem;
+}
+.plate img { display: block; width: 100%; height: auto; }
+.plate figcaption {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  padding: 0.6rem 0.9rem;
+  border-top: 1px dashed rgba(107, 15, 26, 0.6);
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1.6rem 0;
+}
+.gallery-grid .plate, .gallery-grid .clip { margin: 0; max-width: none; }

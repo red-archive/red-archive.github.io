@@ -15,6 +15,7 @@
     { href: "the-ledger.html", label: "The Ledger" },
     { href: "register.html", label: "Register" },
     { href: "faith.html", label: "Faith" },
+    { href: "gallery.html", label: "Plates" },
     { href: "quiz.html", label: "Classify Me" }
   ];
 
@@ -66,6 +67,7 @@
       '<a href="' + R + 'the-ledger.html">annex b: the ledger</a> · ' +
       '<a href="' + R + 'register.html">annex c: the register</a> · ' +
       '<a href="' + R + 'faith.html">annex d: the faith files</a> · ' +
+      '<a href="' + R + 'gallery.html">the plate room</a> · ' +
       '<a href="' + R + 'quiz.html">classification protocol</a>' +
       "</footer>";
   }
