@@ -11,7 +11,11 @@
   padding: 3rem 1.4rem 4rem;
   border-bottom: 1px solid var(--banner);
 }
-.entrance-star {
+/* Doubled selector beats the star module's injected [data-hs] rule
+   (width/height:100%), which lands later in the cascade at equal
+   specificity and would collapse the host to 0 height. */
+.entrance .entrance-star {
+  flex: none;
   width: min(400px, 74vw);
   height: min(400px, 74vw);
 }

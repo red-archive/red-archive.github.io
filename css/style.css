@@ -827,3 +827,48 @@ h1, h2, h3 { line-height: 1.15; }
   .q-opt:hover { transform: none; }
   * { transition: none !important; }
 }
+
+/* ------------------------------------------------------------
+   LOGO — cyberpunk finish (same system as the portraits:
+   overlay + scanlines carried by a wrapper, since <img> takes
+   no pseudo-elements)
+   ------------------------------------------------------------ */
+.logo-fx {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+}
+.logo-fx img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter:
+    saturate(1.15) contrast(1.08)
+    drop-shadow(0 0 6px rgba(255, 43, 61, 0.4))
+    drop-shadow(1px 0 0 rgba(63, 216, 196, 0.3))
+    drop-shadow(-1px 0 0 rgba(255, 43, 61, 0.35));
+}
+.logo-fx::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(160deg, rgba(255, 43, 61, 0.14), transparent 55%),
+    repeating-linear-gradient(0deg, rgba(10, 5, 8, 0.35) 0 1px, transparent 1px 3px);
+  animation: logo-flick 4.1s steps(1) infinite;
+}
+@keyframes logo-flick {
+  0%, 100% { opacity: 0.85; }
+  7%  { opacity: 0.55; }
+  8%  { opacity: 0.9; }
+  46% { opacity: 0.7; }
+  47% { opacity: 0.88; }
+  81% { opacity: 0.5; }
+  83% { opacity: 0.85; }
+}
+/* nav size: glow only — scanlines are noise at 28px */
+.nav-seal.logo-fx::after { background: none; animation: none; }
+@media (prefers-reduced-motion: reduce) {
+  .logo-fx::after { animation: none; }
+}

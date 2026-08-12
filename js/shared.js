@@ -19,11 +19,20 @@
 
   var here = window.location.pathname.split("/").pop() || "index.html";
 
+  // favicon for every page without editing 20 heads
+  (function () {
+    var ic = document.createElement("link");
+    ic.rel = "icon";
+    ic.type = "image/png";
+    ic.href = R + "assets/favicon.png";
+    document.head.appendChild(ic);
+  })();
+
   function buildNav() {
     var el = document.getElementById("nav");
     if (!el) return;
     var html = '<nav class="nav" aria-label="Main">';
-    html += '<a class="nav-brand" href="' + R + 'index.html"><img class="nav-seal" src="' + R + 'assets/red-archive-seal.svg" width="28" height="28" alt="">RED_ARCHIVE <span style="opacity:.55">v19.17</span></a>';
+    html += '<a class="nav-brand" href="' + R + 'index.html"><span class="nav-seal logo-fx"><img src="' + R + 'assets/red-archive-logo.png" width="28" height="28" alt=""></span>RED_ARCHIVE <span style="opacity:.55">v19.17</span></a>';
     html += '<div class="nav-links">';
     links.forEach(function (l) {
       var active = !inSchools && here === l.href.split("#")[0] && l.href.indexOf("#") === -1;
