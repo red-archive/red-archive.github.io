@@ -99,6 +99,13 @@ button:focus-visible {
   font-weight: 700;
   white-space: nowrap;
 }
+.nav-seal {
+  width: 1.55rem;
+  height: 1.55rem;
+  display: inline-block;
+  vertical-align: -0.42rem;
+  margin-right: 0.34rem;
+}
 .nav-brand .star { color: var(--gold); }
 .nav-links {
   display: flex;
