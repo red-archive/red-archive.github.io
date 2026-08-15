@@ -1,4 +1,4 @@
-/* RED ARCHIVE — lineage tree: red-star circuit diagram (index page) */
+/* RED ARCHIVE — lineage tree: cartographic junction diagram (index page) */
 (function () {
   "use strict";
 
@@ -91,16 +91,6 @@
     return n;
   }
 
-  function starPoints(cx, cy, rOut, rIn) {
-    var pts = [];
-    for (var i = 0; i < 10; i++) {
-      var r = i % 2 === 0 ? rOut : rIn;
-      var a = -Math.PI / 2 + (i * Math.PI) / 5;
-      pts.push((cx + r * Math.cos(a)).toFixed(1) + "," + (cy + r * Math.sin(a)).toFixed(1));
-    }
-    return pts.join(" ");
-  }
-
   function byId(id) {
     for (var i = 0; i < NODES.length; i++) if (NODES[i].id === id) return NODES[i];
     return null;
@@ -124,9 +114,7 @@
 
     // era labels + faint column rules
     ERAS.forEach(function (e) {
-      var t = el("text", { x: e.x, y: 28, fill: "rgba(185,167,143,0.5)",
-        "font-family": "IBM Plex Mono, monospace", "font-size": "10.5",
-        "letter-spacing": "2" });
+      var t = el("text", { x: e.x, y: 28, class: "t-era" });
       t.textContent = e.t;
       svg.appendChild(t);
     });
@@ -145,7 +133,9 @@
     NODES.forEach(function (n) {
       var g = el("g", { class: "t-node", tabindex: "0", role: "link",
         "aria-label": n.label + ", " + n.year });
-      g.appendChild(el("polygon", { points: starPoints(n.x, n.y, 13, 5.5), class: "t-star" }));
+      g.appendChild(el("rect", { x: n.x - 22, y: n.y - 22,
+        width: "44", height: "44", class: "t-hit", "aria-hidden": "true" }));
+      g.appendChild(el("circle", { cx: n.x, cy: n.y, r: "9", class: "t-junction t-star" }));
       var labelAbove = n.y > H - 90; // bottom row: keep label on-canvas
       var t1 = el("text", { x: n.x, y: labelAbove ? n.y - 34 : n.y + 30, "text-anchor": "middle" });
       t1.textContent = n.label;
@@ -189,6 +179,11 @@
     }
 
     host.appendChild(svg);
+
+    var hashTarget = window.location.hash && document.getElementById(window.location.hash.slice(1));
+    if (hashTarget) {
+      window.requestAnimationFrame(function () { hashTarget.scrollIntoView(); });
+    }
   }
 
   document.addEventListener("DOMContentLoaded", render);

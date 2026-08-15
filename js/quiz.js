@@ -187,6 +187,15 @@
   var state = { node: "root", path: [] };
   var body = null;
 
+  function animateBranch() {
+    body.classList.remove("is-entering");
+    void body.offsetWidth;
+    body.classList.add("is-entering");
+    body.addEventListener("animationend", function () {
+      body.classList.remove("is-entering");
+    }, { once: true });
+  }
+
   function h(tag, cls, text) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -235,6 +244,7 @@
     });
     body.appendChild(opts);
     renderPath(body);
+    animateBranch();
   }
 
   function metaRow(label, value) {
@@ -250,7 +260,7 @@
     body.textContent = "";
     var wrap = h("div", "q-result");
     wrap.appendChild(h("p", "q-depth", "CLASSIFICATION COMPLETE // " + state.path.length + " FORKS TRAVERSED"));
-    wrap.appendChild(h("p", "verdict", "★ " + r.name));
+    wrap.appendChild(h("p", "verdict", "RESULT // " + r.name));
     wrap.appendChild(h("p", "r-desc", r.desc));
     wrap.appendChild(metaRow("FILE:", "№ " + r.file + " — open the full dossier below"));
     wrap.appendChild(metaRow("COMRADES:", r.comrades));
@@ -275,6 +285,7 @@
 
     body.appendChild(wrap);
     renderPath(body);
+    animateBranch();
   }
 
   document.addEventListener("DOMContentLoaded", function () {
