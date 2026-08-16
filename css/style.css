@@ -41,7 +41,8 @@
   --atlas-sheet: var(--rp-surface);
   --panel-2: var(--rp-overlay);
   --carbon: var(--rp-text);
-  --carbon-soft: var(--rp-subtle);
+  /* Dawn's subtle (#797593) is 4.2:1 on the sheet; pulled toward text to clear AA */
+  --carbon-soft: color-mix(in srgb, var(--rp-subtle) 75%, var(--rp-text));
   --hairline: var(--rp-highlight-med);
   --schism: var(--rp-love);
   --schism-ink: color-mix(in srgb, var(--rp-love) 65%, var(--rp-text));
@@ -103,6 +104,7 @@
     --rp-highlight-low: #21202e;
     --rp-highlight-med: #403d52;
     --rp-highlight-high: #524f67;
+    --carbon-soft: var(--rp-subtle);
     --schism-ink: var(--rp-love);
     --descent-ink: var(--rp-gold);
     --influence: var(--rp-pine);
@@ -133,6 +135,7 @@
   --rp-highlight-low: #21202e;
   --rp-highlight-med: #403d52;
   --rp-highlight-high: #524f67;
+  --carbon-soft: var(--rp-subtle);
   --schism-ink: var(--rp-love);
   --descent-ink: var(--rp-gold);
   --influence: var(--rp-pine);
@@ -1687,6 +1690,7 @@ body:has(.timeline) .epoch {
 .terminal {
   margin-top: 2.5rem;
   border: 1px solid var(--route);
+  scroll-margin-top: calc(var(--header-height) + 0.75rem);
   background: var(--atlas-sheet);
   box-shadow: 0 1rem 2.5rem rgba(var(--shadow-ink), 0.08);
 }
@@ -1750,15 +1754,45 @@ body:has(.timeline) .epoch {
 .q-text {
   margin: 0.75rem 0 0.55rem;
   color: var(--carbon);
+  font-family: var(--font-body);
   font-size: clamp(1.18rem, 2.2vw, 1.45rem);
+  font-stretch: normal;
   font-weight: 650;
+  letter-spacing: 0;
   line-height: 1.4;
+  text-transform: none;
+  text-wrap: pretty;
+}
+
+.q-text:focus-visible,
+.q-verdict:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 6px;
 }
 
 .q-sub {
-  margin-bottom: 1.4rem;
+  margin-bottom: 0.9rem;
   color: var(--carbon-soft);
   font-size: 0.94rem;
+}
+
+/* Plain-terms gloss: what the jargon in the question means. */
+.q-gloss {
+  margin: 0 0 1.4rem;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid var(--influence);
+  background: var(--panel-2);
+  color: var(--carbon);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.q-gloss b {
+  color: var(--influence-ink);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
 }
 
 .q-opts {
@@ -1841,38 +1875,62 @@ body:has(.timeline) .epoch {
 
 .q-path {
   margin-top: 1.6rem;
-  padding: 1rem 0 0 1rem;
+  padding: 1rem 0 0;
   border-top: 1px dashed var(--route);
-  border-left: 2px solid var(--influence);
   color: var(--carbon-soft);
   font-family: var(--font-mono);
   font-size: 0.67rem;
-  line-height: 2;
+  line-height: 1.6;
 }
 
-.q-path .node {
+.q-path summary {
   color: var(--influence-ink);
+  cursor: pointer;
+  list-style: none;
 }
 
-.q-path > div:not(.node) {
+.q-path summary::-webkit-details-marker {
+  display: none;
+}
+
+.q-path summary::before {
+  display: inline-block;
+  width: 1rem;
+  content: "▸";
+  transition: transform 160ms ease;
+}
+
+.q-path[open] summary::before {
+  transform: rotate(90deg);
+}
+
+.q-path ol {
+  margin: 0.55rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--influence);
+  list-style: none;
+}
+
+.q-path li {
   position: relative;
+  margin: 0.35rem 0;
   padding-left: 1.15rem;
 }
 
-.q-path > div:not(.node)::before {
+.q-path li::before {
   position: absolute;
   z-index: 0;
-  top: 50%;
+  top: 0.55rem;
   left: -1rem;
   width: 1.35rem;
   border-top: 2px solid var(--descent);
   content: "";
 }
 
-.q-path > div:not(.node)::after {
+.q-path li::after {
   position: absolute;
   z-index: 1;
-  top: calc(50% - 0.24rem);
+  top: 0.32rem;
   left: -1.15rem;
   width: 0.5rem;
   height: 0.5rem;
@@ -1891,13 +1949,21 @@ body:has(.timeline) .epoch {
   color: var(--schism-ink);
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 5vw, 3rem);
+  font-stretch: condensed;
   font-weight: 760;
+  letter-spacing: -0.02em;
   line-height: 1.05;
   text-transform: uppercase;
 }
 
 .q-result .r-desc {
   margin-bottom: 1.25rem;
+  color: var(--carbon);
+}
+
+.q-result .r-claim {
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--descent);
   color: var(--carbon-soft);
 }
 
@@ -1917,6 +1983,94 @@ body:has(.timeline) .epoch {
   flex-wrap: wrap;
   gap: 0.8rem;
   margin-top: 1.6rem;
+}
+
+/* The verdict stamp above the result name: pass, adjacent, or fail. */
+.q-verdict {
+  display: inline-block;
+  margin: 0.4rem 0 0.2rem;
+  padding: 0.34rem 0.65rem;
+  border: 1px solid currentColor;
+  color: var(--route);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.q-verdict.v-pass {
+  color: var(--influence-ink);
+}
+
+.q-verdict.v-adj {
+  color: var(--descent-ink);
+}
+
+.q-verdict.v-fail {
+  color: var(--schism-ink);
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+
+/* The four-test scoreboard, shown between phases and on the result. */
+.q-tests {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.55rem;
+  margin: 1.1rem 0 1.3rem;
+  padding: 0;
+  list-style: none;
+}
+
+.q-tests li {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--route);
+  border-left-width: 4px;
+  background: var(--atlas-sheet);
+  color: var(--carbon);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.q-tests li.pass {
+  border-left-color: var(--influence);
+}
+
+.q-tests li.fail {
+  border-left-color: var(--schism);
+  color: var(--schism-ink);
+}
+
+.q-tests li.open {
+  border-left-color: var(--descent);
+  color: var(--descent-ink);
+}
+
+.q-tests li.unevidenced {
+  border-left-color: var(--hairline);
+  color: var(--carbon-soft);
+}
+
+.q-result .q-tests {
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.q-tests li .line {
+  color: var(--carbon);
+}
+
+.q-tests li span {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--carbon-soft);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 /* Calls to action and media */
@@ -2329,6 +2483,21 @@ body.page-reference .dossier > .sec .n {
     font-size: 1rem;
   }
 
+  .q-gloss {
+    font-size: 1rem;
+  }
+
+  /* the mono metadata drops under 11px on phones otherwise */
+  .q-verdict {
+    font-size: 0.78rem;
+  }
+
+  .q-tests li,
+  .q-path,
+  .q-result .r-meta {
+    font-size: 0.74rem;
+  }
+
   button,
   input,
   select,
@@ -2401,4 +2570,15 @@ body.page-reference .dossier > .sec .n {
   .motion-ready .epoch {
     background-size: 100% 1px;
   }
+
+  /* an opacity-only cue so the swapped question is still noticeable */
+  .term-body.is-entering {
+    animation: term-fade 180ms linear both !important;
+    animation-duration: 180ms !important;
+  }
+}
+
+@keyframes term-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
