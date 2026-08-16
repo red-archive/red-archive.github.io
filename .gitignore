@@ -11,3 +11,6 @@
 
 # Isolated feature worktrees
 .worktrees/
+
+# Raw screenshot drops (processed copies live in assets/media/screens/)
+NewAssets/
