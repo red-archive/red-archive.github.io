@@ -1,6 +1,6 @@
 # RED ARCHIVE
 
-![Red Archive — a map of arguments](assets/og.png)
+![Red Archive — a map of arguments](assets/og.jpg)
 
 A static, hand-written atlas of communist thought: 20 school dossiers, a lineage tree,
 a master timeline, the great schisms, an ideology axis ("The Line"), and a
