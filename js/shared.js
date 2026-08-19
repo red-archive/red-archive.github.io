@@ -20,7 +20,8 @@
     { href: "the-ledger.html", label: "The Ledger" },
     { href: "register.html", label: "Register" },
     { href: "faith.html", label: "Faith" },
-    { href: "britain.html", label: "Britain" }
+    { href: "britain.html", label: "Britain" },
+    { href: "redbook.html", label: "Red Book" }
   ];
 
   var here = window.location.pathname.split("/").pop() || "index.html";

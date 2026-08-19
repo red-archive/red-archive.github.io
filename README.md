@@ -23,6 +23,7 @@ documented alongside its schisms, critics, and crimes.
 | `register.html` | Annex C: the register of living parties |
 | `faith.html` | Annex D: the faith files |
 | `britain.html` | Annex E: the British file |
+| `redbook.html` | Annex F: the Red Book object file (index only, text not hosted) |
 | `gallery.html` | The Plate Room: art, posters and moving agitprop |
 | `quiz.html` | Classification protocol |
 | `schools/*.html` | One dossier per school |
@@ -47,6 +48,14 @@ overrides that and persists to `localStorage`. `js/theme.js` loads ahead of the
 stylesheet so no page paints in the wrong theme. Switching animates as a circular
 wipe from the toggle where the View Transitions API exists, a colour crossfade
 elsewhere, and instantly under `prefers-reduced-motion`.
+
+## Cache busting
+
+Every page links the stylesheet as `css/style.css?v=<rev>`. **Bump that revision
+whenever `css/style.css` changes**, or returning visitors keep the old file — the
+symptom is new markup rendering unstyled. `scripts/verify-site.py` matches the
+link by pattern, so any `?v=` value passes; it does not check that the value was
+bumped.
 
 ## Verifying
 
@@ -83,9 +92,28 @@ Portraits are hotlinked from [Wikimedia Commons](https://commons.wikimedia.org)
 (public domain / CC-licensed) via `Special:FilePath`. If an image is blocked or
 offline it degrades to a red-star placeholder.
 
-The Plate Room's plates and clips are vendored under `assets/media/` (~45 MB,
-re-encoded down from source) because they are the page's subject rather than
-illustration; provenance is stated on `gallery.html`.
+The Plate Room's plates and clips are vendored under `assets/media/` (re-encoded
+down from source) because they are the page's subject rather than illustration;
+provenance is stated on `gallery.html`.
+
+| Directory | What it holds |
+|-----------|---------------|
+| `assets/media/posters-ussr/` | 10 Soviet posters, 1919–1930 (public domain / CC BY-SA) |
+| `assets/media/posters-china/` | 10 Cultural Revolution plates and dazibao (public domain / CC BY) |
+| `assets/media/logos/` | 6 party and union marks (public domain / CC0 / CC BY / CC BY-SA) |
+| `assets/media/schools/` | 57 per-dossier plates — 1–3 per school file, shown in each file's Plates section |
+
+All four sets come from Wikimedia Commons, capped at 1200px and re-encoded. The
+CC BY and CC BY-SA files carry an attribution requirement, so every title, author
+and licence is printed in `gallery.html` §05 and links to its Commons file page.
+
+Most PRC poster art of the 1950s–70s is still in copyright (life + 50, and many of
+those artists died after 1976), so the Chinese set is limited to press photographs
+and documents under the PRC's copyright exemptions plus CC-licensed scans.
+
+Org marks are reproduced nominatively, to identify the organization an entry is
+about. The Workers Party of Britain and RTSG have no freely-licensed mark and are
+deliberately left without one.
 
 ## License
 

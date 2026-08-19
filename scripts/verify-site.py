@@ -12,7 +12,7 @@ from urllib.parse import unquote, urlsplit
 EXPECTED_HTML = [
     "index.html", "timeline.html", "conflicts.html", "the-line.html",
     "the-ledger.html", "register.html", "faith.html", "britain.html",
-    "gallery.html", "quiz.html",
+    "gallery.html", "quiz.html", "redbook.html",
     *[f"schools/{name}.html" for name in (
         "utopian-socialism", "marxism", "anarcho-communism", "de-leonism",
         "orthodox-marxism", "leninism", "luxemburgism", "left-communism",
@@ -155,9 +155,13 @@ def verify(root: Path):
         html_text = (root / route).read_text(encoding="utf-8")
         prefix = "../" if route.startswith("schools/") else ""
         theme_tag = f'<script src="{prefix}js/theme.js"></script>'
-        style_tag = f'<link rel="stylesheet" href="{prefix}css/style.css">'
+        # the stylesheet carries a ?v= cache-busting revision, so match it by pattern
+        style_match = re.search(
+            rf'<link rel="stylesheet" href="{re.escape(prefix)}css/style\.css(?:\?v=[^"]*)?">',
+            html_text)
         require(theme_tag in html_text, f"{route}: missing pre-paint theme script")
-        require(html_text.find(theme_tag) < html_text.find(style_tag),
+        require(style_match is not None, f"{route}: missing stylesheet link")
+        require(html_text.find(theme_tag) < style_match.start(),
                 f"{route}: theme.js must load before the stylesheet to avoid a flash")
 
     mobile_copy_rule = """.fc-desc,
